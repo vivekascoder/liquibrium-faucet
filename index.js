@@ -3,11 +3,13 @@ import { InMemorySigner } from "@taquito/signer";
 import config from "./config.js";
 import express from "express";
 import fs from "fs";
+import cors from 'cors';
 import bodyParser from "body-parser";
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
 
 const tezos = new TezosToolkit(config.rpcUrl);
 tezos.setProvider({
